@@ -114,7 +114,7 @@ function update_backups() {
 function list_plugins() (
   PATH="/mnt/fast/endless-sky-backup:$PATH"
   cd -- /mnt/fast/endless-sky-mirror/endless-sky-plugins.git
-  git show HEAD:generated/plugins.yaml | yq '.[].homepage'
+  git show HEAD:generated/plugins.yaml | yq '.[] | .autoupdate.update_url // .homepage'
 )
 function clone_plugins() {
   list_plugins | while read -r repo; do

@@ -56,6 +56,7 @@ https://github.com/Tugderic/Tugderics-Addons.git
 https://github.com/ZBok/BetterVanillaHai.git
 https://github.com/ZBok/BetterVanillaPirates.git
 https://github.com/Zitchas/ES_Lampyrid_Start.git
+https://github.com/a-random-lemurian/Lemurias-Extra-ES-Stuff.git
 https://github.com/adegans/SpaceCrate.git
 https://github.com/beccabunny/Beccas-Endless-Expansion.git
 https://github.com/comnom/Eternals.git
