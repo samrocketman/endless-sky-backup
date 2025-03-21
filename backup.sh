@@ -24,8 +24,15 @@ function is_repo_cloneable() (
   timeout 1 git ls-remote "$1" HEAD
 )
 function check_and_clone() {
-  if [ ! -d "$1" ] && is_repo_cloneable "$2"; then
-    git clone --mirror "$2"
+  local_dir="$1"
+  if [ "${3:-}" = plugin ]; then
+    username="$(cut -d/ -f4 <<< "$2")"
+    if [ ! "${username}" = "endless-sky" ]; then
+      local_dir="plugin--${username}--${local_dir}"
+    fi
+  fi
+  if [ ! -d "$local_dir" ] && is_repo_cloneable "$2"; then
+    git clone --mirror "$2" "$local_dir"
   fi
 }
 function clone_repos_and_wikis() {
@@ -61,8 +68,8 @@ function clone_plugins() {
       local_wiki="${local_wiki%.git}.wiki.git"
       local_repo="${repo##*/}"
       local_repo="${local_repo%.git}.git"
-      check_and_clone "${local_wiki}" "${repo%/*}/${local_wiki}"
-      check_and_clone "${local_repo}" "${repo%/*}/${local_repo}"
+      check_and_clone "${local_wiki}" "${repo%/*}/${local_wiki}" plugin
+      check_and_clone "${local_repo}" "${repo%/*}/${local_repo}" plugin
     )
   done
 }
@@ -112,4 +119,4 @@ build_reflog
 commit_reflog
 for x in "$backup_destination"/*.git; do
   git config -f "$x"/config --get remote.origin.url
-done > index.txt
+done | LC_ALL=C sort -u > index.txt
