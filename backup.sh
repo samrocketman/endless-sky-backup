@@ -51,8 +51,8 @@ function clone_repos_and_wikis() {
   done
 }
 function update_backups() {
-  find . -maxdepth 1 -name '*.git' -print0 | \
-    xargs -0 -n1 -P4 -I'{}' -- /bin/bash -exc 'cd -- "{}"; git fetch'
+  find "$backup_destination" -maxdepth 1 -name '*.git' -print0 | \
+    xargs -0 -P4 -I'{}' -- /bin/bash -exc 'cd -- "{}"; git fetch'
 }
 function list_plugins() (
   PATH="/mnt/fast/endless-sky-backup:$PATH"
