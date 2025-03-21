@@ -16,6 +16,17 @@ https://github.com/DJF113/Core-Mining-Inc.git
 https://github.com/Daeridanii1/DAIS.git
 https://github.com/EndlessSkyCommunity/-Omnis.git
 https://github.com/EndlessSkyCommunity/-Omnis.wiki.git
+https://github.com/EndlessSkyCommunity/CreatePlanet-Gimp.git
+https://github.com/EndlessSkyCommunity/ESLauncher2.git
+https://github.com/EndlessSkyCommunity/ESParser-java.git
+https://github.com/EndlessSkyCommunity/Endless-Schema.git
+https://github.com/EndlessSkyCommunity/EndlessParser.git
+https://github.com/EndlessSkyCommunity/EndlessPy.git
+https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot.git
+https://github.com/EndlessSkyCommunity/EndlessSky-Discord-Bot.wiki.git
+https://github.com/EndlessSkyCommunity/artifact-unblocker.git
+https://github.com/EndlessSkyCommunity/awesome-endless-sky.git
+https://github.com/EndlessSkyCommunity/espim.git
 https://github.com/EndlessSkyCommunity/world-forge.git
 https://github.com/EndlessSkyCommunity/world-forge.wiki.git
 https://github.com/JimmyFiryh/Jimmys-Ship-Emporium.git

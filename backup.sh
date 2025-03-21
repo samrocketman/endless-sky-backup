@@ -30,10 +30,34 @@ function check_and_clone() {
     if [ ! "${username}" = "endless-sky" ]; then
       local_dir="plugin--${username}--${local_dir}"
     fi
+  elif [ "${3:-}" = EndlessSkyCommunity ]; then
+      local_dir="EndlessSkyCommunity--${local_dir}"
   fi
   if [ ! -d "$local_dir" ] && is_repo_cloneable "$2"; then
     git clone --mirror "$2" "$local_dir"
   fi
+}
+function clone_es_community() {
+  java -jar cloneable.jar \
+    --github-token=/mnt/fast/endless-sky-backup/github-token \
+    --owner=EndlessSkyCommunity | \
+  while read -r repo; do
+    (
+      # endless-sky is covered by endless-sky organization
+      # -Omnis is covered by plugins backup
+      # world-forge is covered by plugins backup
+      if [ "$repo" = 'endless-sky' ] || [ "$repo" = "-Omnis" ] || [ "$repo" = "world-forge" ]; then
+        # exit breaks out of the subshell similar to "continue" while loop
+        exit 0
+      fi
+      cd -- "$backup_destination"
+      wiki="${repo}.wiki.git"
+      bare_repo="${repo}.git"
+      set -x
+      check_and_clone "$wiki" https://github.com/EndlessSkyCommunity/"$wiki" EndlessSkyCommunity
+      check_and_clone "$bare_repo" https://github.com/EndlessSkyCommunity/"$bare_repo" EndlessSkyCommunity
+    )
+  done
 }
 function clone_repos_and_wikis() {
   java -jar cloneable.jar \
@@ -112,6 +136,7 @@ function commit_reflog() (
 cd -- "$backup_scripts"
 clone_repos_and_wikis
 clone_plugins
+clone_es_community
 update_backups
 # track refs on a daily basis
 create_reflog
