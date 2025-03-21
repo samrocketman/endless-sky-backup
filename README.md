@@ -1,8 +1,11 @@
 # Endless Sky Offline Backup
 
 I maintain an offline backup of [endless sky][es], its associated repositories,
-and plugin index.  As a "break glass" effort, in case the open source project is
-vandalized.
+and plugin index.
+
+If you need a repository in my backup and would like a copy reach out by filing
+a GitHub issue.  See [index.txt](index.txt) for a list of repositories in my
+backup.
 
 ## Prerequisites
 
