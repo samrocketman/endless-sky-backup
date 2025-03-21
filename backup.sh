@@ -95,6 +95,18 @@ function clone_samrocketman_es_repos() (
     git clone --reference "${backup_destination}/endless-sky.git" --mirror https://github.com/samrocketman/endless-sky "${clone_dir}"
   fi
 )
+function clone_hecter_es_repos() (
+  for x in \
+    https://github.com/Hecter94/EndlessSky-PluginArchive \
+    https://github.com/Hecter94/EndlessSky-PluginAssets
+  do
+    clone_dir="${backup_destination}/Hecter94--${x##*/}.git"
+    if [ ! -d "${clone_dir}" ]; then
+      git clone --mirror "$x" "${clone_dir}"
+    fi
+  done
+
+)
 function update_backups() {
   find "$backup_destination" -maxdepth 1 -name '*.git' -print0 | \
     xargs -0 -P4 -I'{}' -- /bin/bash -exc 'cd -- "{}"; git fetch'
@@ -159,6 +171,7 @@ clone_repos_and_wikis
 clone_plugins
 clone_es_community
 clone_samrocketman_es_repos
+clone_hecter_es_repos
 update_backups
 # track refs on a daily basis
 create_reflog

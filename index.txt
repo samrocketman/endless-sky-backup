@@ -29,6 +29,8 @@ https://github.com/EndlessSkyCommunity/awesome-endless-sky.git
 https://github.com/EndlessSkyCommunity/espim.git
 https://github.com/EndlessSkyCommunity/world-forge.git
 https://github.com/EndlessSkyCommunity/world-forge.wiki.git
+https://github.com/Hecter94/EndlessSky-PluginArchive
+https://github.com/Hecter94/EndlessSky-PluginAssets
 https://github.com/JimmyFiryh/Jimmys-Ship-Emporium.git
 https://github.com/MIMSBZ3/Gaguka.git
 https://github.com/MidnightPlugins/Logbook-Help.git
