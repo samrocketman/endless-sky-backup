@@ -1,0 +1,33 @@
+versions:
+  cloneable.jar: "0.9"
+  yq: 4.45.1
+checksums:
+  cloneable.jar: c1e98c88f979b9364988389b988a1936813767ca2c9607075846af9b5e87c0ca
+  yq:
+    linux:
+      arm64: ceea73d4c86f2e5c91926ee0639157121f5360da42beeb8357783d79c2cc6a1d
+      amd64: 654d2943ca1d3be2024089eb4f270f4070f491a0610481d128509b2834870049
+    darwin:
+      arm64: 83edb55e254993f9043d01a1515205b54ffc2c7ce815a780573da64afaf2c71b
+      amd64: cee787479550f0c94662e45251e7bb80f70e7071840bd19ce24542e9bcb4157a
+utility:
+  cloneable.jar: &defaults
+    download: https://github.com/samrocketman/cloneable/releases/download/${version}/cloneable.jar
+    dest: .
+    update: |
+      owner="$(awk -F/ '{print $4"/"$5}' <<< "${download}")"
+      export download=https://github.com/"${owner}"/releases/latest
+      eval "${default_download_head}" |
+      awk '$1 ~ /[Ll]ocation:/ { gsub(".*/[^0-9.]*", "", $0); print;exit}'
+  yq:
+    <<: *defaults
+    perm: '0755'
+    os:
+      Linux: linux
+      Darwin: darwin
+    arch:
+      x86_64: amd64
+      aarch64: arm64
+      Darwin:
+        i386: amd64
+    download: https://github.com/mikefarah/yq/releases/download/v${version}/yq_${os}_${arch}
