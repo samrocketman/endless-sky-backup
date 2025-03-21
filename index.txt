@@ -92,5 +92,11 @@ https://github.com/mathwhiz1212/ES-conscience-plugin.git
 https://github.com/orbitalsupershell/sensor.git
 https://github.com/pshy0/es-ruin-the-fun.git
 https://github.com/samrocketman/Spacefarer.git
+https://github.com/samrocketman/endless-sky
+https://github.com/samrocketman/endless-sky-backup
+https://github.com/samrocketman/endless-sky-disable-author-ships
+https://github.com/samrocketman/endless-sky-vscode-devcontainer
+https://github.com/samrocketman/raw-sounds-of-endless-sky
+https://github.com/samrocketman/sounds-of-endless-sky
 https://github.com/ziproot/disable-free-worlds.git
 https://github.com/ziproot/endless-sky-main-plot-plus.git

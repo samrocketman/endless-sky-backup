@@ -74,6 +74,27 @@ function clone_repos_and_wikis() {
     )
   done
 }
+function clone_samrocketman_es_repos() (
+  # Spacefarer is covered by plugin index
+  for x in \
+    https://github.com/samrocketman/endless-sky-backup \
+    https://github.com/samrocketman/endless-sky-disable-author-ships \
+    https://github.com/samrocketman/endless-sky-vscode-devcontainer \
+    https://github.com/samrocketman/raw-sounds-of-endless-sky \
+    https://github.com/samrocketman/sounds-of-endless-sky
+  do
+    clone_dir="${backup_destination}/samrocketman--${x##*/}.git"
+    if [ -d "${clone_dir}" ]; then
+      continue
+    fi
+    git clone --mirror "$x" "${clone_dir}"
+    git clone --mirror "${x}.wiki.git" "${clone_dir%.git}.wiki.git" || true
+  done
+  clone_dir="${backup_destination}/samrocketman--endless-sky.git"
+  if [ ! -d "${clone_dir}" ]; then
+    git clone --reference "${backup_destination}/endless-sky.git" --mirror https://github.com/samrocketman/endless-sky "${clone_dir}"
+  fi
+)
 function update_backups() {
   find "$backup_destination" -maxdepth 1 -name '*.git' -print0 | \
     xargs -0 -P4 -I'{}' -- /bin/bash -exc 'cd -- "{}"; git fetch'
@@ -137,6 +158,7 @@ cd -- "$backup_scripts"
 clone_repos_and_wikis
 clone_plugins
 clone_es_community
+clone_samrocketman_es_repos
 update_backups
 # track refs on a daily basis
 create_reflog
